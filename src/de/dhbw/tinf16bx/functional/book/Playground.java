@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import de.dhbw.tinf16bx.functional.book.creation.CreatePlayground;
+import de.dhbw.tinf16bx.functional.book.creation.CreateLibrary;
 import de.dhbw.tinf16bx.functional.book.model.Author;
 import de.dhbw.tinf16bx.functional.book.model.Book;
 
@@ -18,7 +18,7 @@ public class Playground {
 	private static final int amountOfBooks = 2_000_000;
 
 	public static void main(String[] args) throws Exception {
-		final List<Book> allBooks = CreatePlayground.withBooks(amountOfBooks, random);
+		final List<Book> allBooks = CreateLibrary.withBooks(amountOfBooks, random);
 
 //		System.out.println(allBooks.stream()
 //			.map(Book::isbn)

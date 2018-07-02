@@ -9,7 +9,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-import de.dhbw.tinf16bx.functional.book.creation.CreatePlayground;
+import de.dhbw.tinf16bx.functional.book.creation.CreateLibrary;
 import de.dhbw.tinf16bx.functional.book.model.Book;
 import de.dhbw.tinf16bx.functional.book.model.Chapter;
 
@@ -19,7 +19,7 @@ public class Main {
 	private static final int amountOfBooks = 100;
 
 	public static void main(String[] args) {
-		final List<Book> allBooks = CreatePlayground.withBooks(amountOfBooks, random);
+		final List<Book> allBooks = CreateLibrary.withBooks(amountOfBooks, random);
 		
 		Set<Book> uniqueBooks = new HashSet<>();
 		final Consumer<Book> thing = uniqueBooks::add;

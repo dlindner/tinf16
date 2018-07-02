@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -40,6 +43,31 @@ public class Book implements Serializable {
 				publicationDateWith(random),
 				chaptersWith(random));
 	}
+	
+	public class Pages {
+		private int count;
+		
+		private Pages() {
+			super();
+			this.count = 0;
+		}
+		
+		public void add(int additionalPages) {
+			this.count += additionalPages;
+		}
+
+		public int asInt() {
+			return this.count;
+		}
+	}
+	
+	public int countPages() {
+		final Pages pages = new Pages();
+		for (Chapter chapter : content()) {
+			chapter.addTo(pages);
+		}
+		return pages.asInt();
+	}
 
 	public Author author() {
 		return author;
@@ -74,5 +102,24 @@ public class Book implements Serializable {
 			.generate(() -> Chapter.createWith(random, wordsPerPage))
 			.limit(amount)
 			.collect(Collectors.toList());
+	}
+	
+	public void ifPagesCountedWith(
+			Function<Chapter, Integer> pageCounter,
+			Predicate<Integer> condition,
+			Consumer<Book> thenAction,
+			Consumer<Book> elseAction) {
+		
+	}
+	
+	public void ifPages(
+			Predicate<Integer> condition,
+			Consumer<Book> thenAction,
+			Consumer<Book> elseAction) {
+		if (condition.test(countPages())) {
+			thenAction.accept(this);
+			return;
+		}
+		elseAction.accept(this);
 	}
 }

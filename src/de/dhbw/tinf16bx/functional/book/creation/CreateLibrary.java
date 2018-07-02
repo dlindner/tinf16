@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 
 import de.dhbw.tinf16bx.functional.book.model.Book;
 
-public final class CreatePlayground {
+public final class CreateLibrary {
 
-	private CreatePlayground() {
+	private CreateLibrary() {
 		super();
 	}
 

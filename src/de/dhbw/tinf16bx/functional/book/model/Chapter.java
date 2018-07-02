@@ -3,6 +3,8 @@ package de.dhbw.tinf16bx.functional.book.model;
 import java.io.Serializable;
 import java.util.Random;
 
+import de.dhbw.tinf16bx.functional.book.model.Book.Pages;
+
 public class Chapter implements Serializable {
 
 	private static final long serialVersionUID = 1068646614125850906L;
@@ -15,9 +17,9 @@ public class Chapter implements Serializable {
 		this.words = words;
 	}
 
-	public int pages() {
-		return pages;
-	}
+//	public int pages() {
+//		return pages;
+//	}
 
 	public int words() {
 		return this.words;
@@ -40,5 +42,9 @@ public class Chapter implements Serializable {
 
 	public void add(Chapter c2) {
 		System.out.println(c2 + " added");
+	}
+
+	public void addTo(Pages pages) {
+		pages.add(this.pages);
 	}
 }
